@@ -20,7 +20,7 @@ When the player has successfully guessed the word or failed at doing so, the gam
 	The code should compile without any issues.
 	No runtime crashes (handle wrongful input from user).
 	Read words from file.
-	Custom container for the words (motivate what structure you implemented and why it's good for this case). Vector good, array better if not expanding
+	Custom container for the words (motivate what structure you implemented and why it's good for this case)
 	Read words from file.
 	Good code quality (readable, well structures and good and consistent naming).
 
@@ -122,16 +122,12 @@ class HiddenWord
 	void checkAnswer(std::vector<char> inputVector, int * inputState);
 };
 
-HiddenWord::HiddenWord() 
+HiddenWord::HiddenWord() //constructor
 {
-
-
 	hiddenWordVector.clear();
 	int randomLine = rand() % getFileLineCount(FILEPOS);
 	hiddenWord = getLine(randomLine, FILEPOS);
 	transform(hiddenWord.begin(), hiddenWord.end(), hiddenWord.begin(), ::toupper);
-	std::cout << hiddenWord;
-
 	// constructs the vector
 	for (size_t i = 0; i < hiddenWord.length(); i++)
 	{
@@ -169,7 +165,6 @@ void HiddenWord::checkAnswer(std::vector<char> inputVector, int * inputState)
 		inputCharPosition = 0;
 		hiddenCharPosition++;
 	}
-	//return inputState;
 }
 
 
@@ -208,11 +203,9 @@ int main()
 void game()
 {
 	HiddenWord hiddenWord;
-	
-	
 	bool hasWon = false;
 
-    // system("cls"); // Clears the console, works only on Windows 
+    system("cls"); // Clears the console, works only on Windows 
 	std::cout << "Welcome to cpp Wordle" << std::endl;
 
 	// Main loop, iterates through the players attempts
